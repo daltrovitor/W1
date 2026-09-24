@@ -11,40 +11,35 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "PRX × B2 EVENTOS — A Próxima Geração Precisa de um Lugar Para Acontecer",
+  title: "PRX × W1 CONSULTORIA FINANCEIRA — Uma nova geração de investidores começa antes do patrimônio",
   description:
-    "Proposta comercial estratégica entre a PRX e a B2 Eventos: a união entre o ecossistema digital da nova geração de Rafael Molina e a autoridade líder em eventos e experiências presenciais.",
-  authors: [{ name: "PRX & B2 Eventos" }, { name: "ViraWeb", url: "https://viraweb.online" }],
+    "Proposta de parceria estratégica entre a PRX e a W1 Consultoria Financeira: transformando jovens consumidores em jovens investidores por meio da vertical PRX INVEST.",
+  authors: [{ name: "PRX & W1 Consultoria Financeira" }],
   keywords: [
     "PRX",
-    "B2 Eventos",
-    "Rafael Molina",
+    "W1",
+    "W1 Consultoria Financeira",
+    "PRX INVEST",
     "Geração Z",
-    "Eventos Universitários",
-    "Formaturas",
-    "PRX PASS",
-    "PRX UP",
-    "PRX RUN",
-    "PRX FOUNDERS",
-    "PRX BREAK",
-    "Experiências",
-    "Comunidade Jovem",
+    "Investimentos",
+    "Educação Financeira",
+    "Planejamento Financeiro",
+    "Linha PRX",
+    "PRX First 100",
+    "Anti-Bet",
+    "PRX Founders",
+    "Patrimônio",
   ],
   openGraph: {
-    title: "PRX × B2 EVENTOS — Proposta Estratégica",
+    title: "PRX × W1 CONSULTORIA FINANCEIRA — Uma nova geração de investidores começa antes do patrimônio",
     description:
-      "A PRX leva a comunidade. A B2 transforma comunidade em experiência. Construindo um fluxo permanente de negócios para a nova geração.",
+      "A PRX possui acesso, linguagem e conexão com a Geração Z. A W1 possui conhecimento e metodologia financeira. Juntos, construindo o LTV da próxima geração.",
     type: "website",
     locale: "pt_BR",
   },
   robots: {
     index: true,
     follow: true,
-  },
-  icons: {
-    icon: "https://www.viraweb.online/favicon.png",
-    shortcut: "https://www.viraweb.online/favicon.png",
-    apple: "https://www.viraweb.online/favicon.png",
   },
 };
 
@@ -57,7 +52,7 @@ export default function RootLayout({
     <html lang="pt-BR" suppressHydrationWarning className="scroll-smooth">
       <body
         suppressHydrationWarning
-        className="font-sans antialiased bg-white text-slate-900 selection:bg-[#0B67FF] selection:text-white min-h-screen"
+        className="font-sans antialiased bg-white text-slate-900 selection:bg-[#032029] selection:text-white min-h-screen"
       >
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>

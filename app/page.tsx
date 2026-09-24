@@ -3,36 +3,39 @@
 
 import React, { useState } from "react";
 import PRXLogo from "./components/PRXLogo";
-import B2Logo from "./components/B2Logo";
-import VirawebLogo from "./components/VirawebLogo";
+import W1Logo from "./components/W1Logo";
 import IntroSplash from "./components/IntroSplash";
 import {
   ArrowRight,
   Sparkles,
-  Users,
-  Compass,
-  GraduationCap,
-  Calendar,
-  CheckCircle2,
-  Share2,
-  Award,
-  Zap,
-  Coffee,
-  Activity,
-  Briefcase,
-  Ticket,
-  Flame,
-  School,
-  ExternalLink,
-  ChevronRight,
+  ShieldCheck,
   TrendingUp,
-  FileDown,
+  Target,
+  Plane,
+  Car,
+  Home,
+  Globe2,
+  Cpu,
+  Leaf,
+  KeyRound,
+  Hourglass,
+  Layers,
+  Award,
+  Users2,
+  Briefcase,
+  Share2,
   Play,
+  Printer,
+  ChevronRight,
+  Compass,
+  CheckCircle2,
+  Flame,
+  Coins,
 } from "lucide-react";
 
 export default function ProposalPage() {
   const [showIntro, setShowIntro] = useState(true);
-  const [activeTab, setActiveTab] = useState<"prx-b2" | "b2-prx">("prx-b2");
+  const [activeObjectiveTab, setActiveObjectiveTab] = useState<string>("PRX START");
   const [copied, setCopied] = useState(false);
 
   const handleShare = () => {
@@ -49,898 +52,787 @@ export default function ProposalPage() {
     }
   };
 
+  const objectivesList = [
+    {
+      id: "PRX START",
+      title: "PRX START",
+      concept: "Meu primeiro investimento",
+      products: "Tesouro Direto, CDBs e fundos conservadores",
+      icon: Coins,
+      tag: "Entrada & Reserva",
+      desc: "A porta de entrada simples e sem complicação para quem está dando os primeiros passos e deseja ver o dinheiro render com segurança.",
+    },
+    {
+      id: "PRX TRIP",
+      title: "PRX TRIP",
+      concept: "Minha próxima viagem",
+      products: "Renda fixa de curto e médio prazo",
+      icon: Plane,
+      tag: "Experiências",
+      desc: "Metodologia de poupança programada para viagens de férias, festivais e intercâmbios, conectando a data do embarque ao vencimento do ativo.",
+    },
+    {
+      id: "PRX CAR",
+      title: "PRX CAR",
+      concept: "Meu primeiro carro",
+      products: "Renda fixa + carteira por objetivo",
+      icon: Car,
+      tag: "Conquista",
+      desc: "Estratégia híbrida para quem quer adquirir o primeiro veículo ou dar uma entrada expressiva sem se endividar em financiamentos abusivos.",
+    },
+    {
+      id: "PRX HOME",
+      title: "PRX HOME",
+      concept: "Meu primeiro apê",
+      products: "Carteira diversificada de longo prazo",
+      icon: Home,
+      tag: "Patrimônio",
+      desc: "Planejamento focado na conquista do primeiro imóvel, combinando consistência de aportes e rentabilidade real acima da inflação.",
+    },
+    {
+      id: "PRX GLOBAL",
+      title: "PRX GLOBAL",
+      concept: "Quero investir no mundo",
+      products: "ETFs e fundos internacionais",
+      icon: Globe2,
+      tag: "Internacional",
+      desc: "Dolarização patrimonial e exposição às maiores economias globais a partir de frações acessíveis de cotas internacionais.",
+    },
+    {
+      id: "PRX TECH",
+      title: "PRX TECH",
+      concept: "Quero investir no futuro",
+      products: "ETFs e fundos de tecnologia e inovação",
+      icon: Cpu,
+      tag: "Inovação",
+      desc: "Alocação focada nas teses que a própria Geração Z consome e acredita: IA, semicondutores, cibersegurança e economia digital.",
+    },
+    {
+      id: "PRX GREEN",
+      title: "PRX GREEN",
+      concept: "Dinheiro + impacto",
+      products: "Fundos e ativos ESG, quando adequados",
+      icon: Leaf,
+      tag: "Sustentabilidade",
+      desc: "Investimentos em governança, sustentabilidade e transição energética para jovens que exigem coerência com seus valores humanos.",
+    },
+    {
+      id: "PRX FREEDOM",
+      title: "PRX FREEDOM",
+      concept: "Independência financeira",
+      products: "Carteira diversificada de longo prazo",
+      icon: KeyRound,
+      tag: "Liberdade",
+      desc: "Construção de renda passiva contínua para dar ao jovem o poder de escolha profissional e liberdade de locomoção ao longo da vida.",
+    },
+    {
+      id: "PRX RETIRE",
+      title: "PRX RETIRE",
+      concept: "Começar cedo muda tudo",
+      products: "Previdência e investimentos de longo prazo",
+      icon: Hourglass,
+      tag: "Juros Compostos",
+      desc: "O superpoder que só o jovem tem: o fator tempo. Mostrar matematicamente como começar aos 18 anos exige 10x menos esforço do que aos 40.",
+    },
+  ];
+
+  const selectedObjective = objectivesList.find((o) => o.id === activeObjectiveTab) || objectivesList[0];
+
   return (
-    <div className="min-h-screen bg-white text-slate-900 selection:bg-[#0B67FF] selection:text-white relative overflow-x-hidden">
-      {/* Apresentação Inicial Estilo ViraWeb (Cadência 0.3s por Peça) */}
+    <div className="min-h-screen bg-white text-slate-900 selection:bg-[#032029] selection:text-white relative overflow-x-hidden">
+      {/* Splash Screen Cinético com fatiamento sequencial PRX × W1 */}
       <IntroSplash isOpen={showIntro} onClose={() => setShowIntro(false)} />
 
       {/* ========================================================================= */}
-      {/* 1. CABEÇALHO INSTITUCIONAL FIXO (Top Bar)                                 */}
+      {/* 1. CABEÇALHO INSTITUCIONAL FIXO                                           */}
       {/* ========================================================================= */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-          {/* Aliança de Logos no Topo */}
+          {/* Logos da Parceria */}
           <div className="flex items-center gap-3 sm:gap-5">
-            <PRXLogo size="sm" animated={false} className="w-24 sm:w-28" />
-            <span className="text-slate-300 font-light text-xl sm:text-2xl select-none">
+            <PRXLogo size="sm" showSubtitle={false} className="w-20 sm:w-24" />
+            <span className="text-slate-300 font-light text-xl sm:text-2xl select-none" aria-hidden="true">
               ×
             </span>
-            <B2Logo size="sm" animated={false} className="w-20 sm:w-24" />
+            <W1Logo size="sm" showSubtitle={false} className="w-16 sm:w-20" />
           </div>
 
-          {/* Navegação F-Pattern Anchor Links (Desktop) */}
-          <nav className="hidden md:flex items-center gap-7 text-xs font-semibold tracking-wider uppercase text-slate-600">
-            <a
-              href="#oportunidade"
-              className="hover:text-[#0B67FF] transition-colors cursor-pointer"
-            >
+          {/* Navegação Rápida (Desktop) */}
+          <nav className="hidden lg:flex items-center gap-6 text-xs font-semibold tracking-wider uppercase text-slate-600">
+            <a href="#oportunidade" className="hover:text-[#032029] transition-colors cursor-pointer">
               A Oportunidade
             </a>
-            <a
-              href="#quem-somos"
-              className="hover:text-[#0B67FF] transition-colors cursor-pointer"
-            >
-              Rafael Molina
+            <a href="#parceria" className="hover:text-[#032029] transition-colors cursor-pointer">
+              PRX Invest × W1
             </a>
-            <a
-              href="#parceria"
-              className="hover:text-[#0B67FF] transition-colors cursor-pointer"
-            >
-              A Parceria
+            <a href="#objetivos" className="hover:text-[#032029] transition-colors cursor-pointer">
+              Linha PRX
             </a>
-            <a
-              href="#prx-pass"
-              className="hover:text-[#0B67FF] transition-colors cursor-pointer"
-            >
-              PRX Pass
+            <a href="#first100" className="hover:text-[#032029] transition-colors cursor-pointer">
+              PRX First 100
             </a>
-            <a
-              href="#escolas"
-              className="hover:text-[#0B67FF] transition-colors cursor-pointer"
-            >
-              Escolas
+            <a href="#anti-bet" className="hover:text-[#032029] transition-colors cursor-pointer">
+              Anti-Bet
             </a>
-            <a
-              href="#visao"
-              className="hover:text-[#0B67FF] transition-colors cursor-pointer"
-            >
-              A Visão
+            <a href="#tese" className="hover:text-[#032029] transition-colors cursor-pointer">
+              A Tese
             </a>
           </nav>
 
-          {/* Ações Rápidas do Cabeçalho */}
-          <div className="flex items-center gap-3">
+          {/* Ações do Cabeçalho */}
+          <div className="flex items-center gap-2 sm:gap-3">
             <button
-              onClick={handlePrint}
-              title="Salvar ou Imprimir Proposta em PDF"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-slate-700 bg-slate-100 hover:bg-slate-200/70 rounded-sm border border-slate-200 transition-colors cursor-pointer no-print"
+              type="button"
+              onClick={() => setShowIntro(true)}
+              className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-slate-950 bg-slate-100 hover:bg-slate-200 rounded-sm cursor-pointer transition-colors"
+              title="Rever apresentação da marca"
+              aria-label="Rever animação da marca"
             >
-              <FileDown className="w-3.5 h-3.5" />
-              <span>Exportar PDF</span>
+              <Play className="w-3.5 h-3.5 fill-current" />
+              <span className="hidden sm:inline">Rever Marca</span>
             </button>
-            <a
-              href="#visao"
-              className="inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold text-white bg-[#0B67FF] hover:bg-[#0052D4] rounded-sm transition-all shadow-sm active:scale-[0.98] cursor-pointer"
+            <button
+              type="button"
+              onClick={handleShare}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-[#032029] hover:bg-[#053240] rounded-sm cursor-pointer transition-all shadow-xs"
+              aria-label="Compartilhar proposta"
             >
-              <span>Validar Aliança</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
+              <Share2 className="w-3.5 h-3.5" />
+              <span>{copied ? "Copiado!" : "Compartilhar"}</span>
+            </button>
           </div>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
-        {/* ========================================================================= */}
-        {/* COMPOSIÇÃO EM PADRÃO F (F-PATTERN LAYOUT)                                 */}
-        {/* ========================================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-          {/* ======================================================================= */}
-          {/* HASTE VERTICAL ESQUERDA (The F-Spine / Navegação e Indicadores)         */}
-          {/* ======================================================================= */}
-          <aside className="lg:col-span-3 hidden lg:block">
-            <div className="sticky top-28 space-y-8">
-              {/* Box de Status da Proposta */}
-              <div className="p-5 border border-slate-200 bg-slate-50/60 rounded-sm">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-[10px] font-mono font-bold tracking-widest text-slate-500 uppercase">
-                    Documento Estratégico
-                  </span>
-                  <span className="inline-flex items-center px-2 py-0.5 text-[10px] font-semibold text-[#0B67FF] bg-blue-50 border border-blue-200 rounded-sm">
-                    Confidencial
-                  </span>
-                </div>
-                <h3 className="text-base font-bold text-slate-900 leading-snug">
-                  PRX × B2 Eventos
-                </h3>
-                <p className="text-xs text-slate-500 mt-1">
-                  Parceria de Geração Recorrente de Negócios & Experiências
-                </p>
-                <div className="mt-4 pt-4 border-t border-slate-200/80 flex items-center justify-between text-xs text-slate-600">
-                  <span>Ano de Ativação</span>
-                  <span className="font-mono font-semibold text-slate-900">
-                    2026 / 2027
-                  </span>
-                </div>
-              </div>
+      <main>
+        {/* ======================================================================= */}
+        {/* 2. HERO SECTION — PRX × W1 CONSULTORIA FINANCEIRA                       */}
+        {/* ======================================================================= */}
+        <section className="relative pt-12 pb-20 sm:pt-20 sm:pb-28 border-b border-slate-100 overflow-hidden">
+          {/* Geometria de Apoio Sutil */}
+          <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[radial-gradient(#032029_1px,transparent_1px)] [background-size:24px_24px]" />
 
-              {/* Trilhas em Padrão F (Índice de Leitura Rápida) */}
-              <div className="space-y-1">
-                <p className="text-[11px] font-mono uppercase font-bold tracking-wider text-slate-400 mb-2 px-3">
-                  Índice da Proposta
-                </p>
-                {[
-                  { id: "hero", label: "01. Aliança da Nova Geração" },
-                  { id: "oportunidade", label: "02. A Oportunidade" },
-                  { id: "quem-somos", label: "03. Quem Está por Trás" },
-                  { id: "parceria", label: "04. Modelo de Parceria" },
-                  { id: "prx-pass", label: "05. B2 no PRX PASS" },
-                  { id: "escolas", label: "06. Frentes Escolares" },
-                  { id: "visao", label: "07. A Visão & Fechamento" },
-                ].map((item) => (
-                  <a
-                    key={item.id}
-                    href={`#${item.id}`}
-                    className="flex items-center justify-between px-3 py-2 text-xs font-medium text-slate-600 hover:text-[#0B67FF] hover:bg-slate-50 rounded-sm transition-colors group cursor-pointer"
-                  >
-                    <span>{item.label}</span>
-                    <ChevronRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-[#0B67FF]" />
-                  </a>
-                ))}
-              </div>
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            {/* Tag Institucional */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 border border-slate-200 bg-slate-50/80 rounded-sm mb-8">
+              <span className="w-2 h-2 rounded-full bg-[#032029]" />
+              <span className="text-xs font-mono font-medium tracking-widest uppercase text-slate-600">
+                PRX INVEST × W1 CONSULTORIA FINANCEIRA
+              </span>
+            </div>
 
-              {/* Cartão de Apoio Institucional */}
-              <div className="p-4 border border-slate-200/70 bg-white rounded-sm text-xs text-slate-600 space-y-2.5">
-                <div className="flex items-center gap-2 text-slate-900 font-semibold">
-                  <Sparkles className="w-4 h-4 text-[#0B67FF]" />
-                  <span>Sinergia Imediata</span>
-                </div>
-                <p className="text-[11px] leading-relaxed text-slate-500">
-                  A PRX entra com a base e a fidelização digital. A B2 entra com
-                  a operação líder em experiências ao vivo.
-                </p>
-                <button
-                  onClick={handleShare}
-                  className="w-full mt-2 inline-flex items-center justify-center gap-2 px-3 py-2 text-xs font-medium text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-sm transition-colors cursor-pointer"
-                >
-                  <Share2 className="w-3.5 h-3.5" />
-                  <span>{copied ? "Link Copiado!" : "Compartilhar Proposta"}</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setShowIntro(true)}
-                  className="w-full mt-1.5 inline-flex items-center justify-center gap-1.5 py-1.5 text-[11px] font-medium text-slate-500 hover:text-slate-900 transition-colors cursor-pointer"
-                  title="Rever apresentação animada de abertura"
-                >
-                  <Play className="w-3 h-3 text-[#0066FF] fill-[#0066FF]" />
-                  <span>Rever apresentação da marca</span>
-                </button>
+            {/* Título Principal Monumental */}
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-tight text-slate-950 leading-[1.15] mb-8">
+              Uma nova geração de investidores <br className="hidden sm:inline" />
+              <span className="font-semibold text-[#032029]">começa antes do patrimônio.</span>
+            </h1>
+
+            {/* Subtítulo / Lead */}
+            <p className="max-w-3xl mx-auto text-base sm:text-xl text-slate-600 font-normal leading-relaxed mb-10">
+              Nossa proposta não é criar mais uma prateleira de investimentos. É construir, junto à W1, uma
+              jornada capaz de transformar jovens consumidores em jovens investidores — falando de dinheiro a
+              partir dos seus objetivos, da sua linguagem e do futuro que desejam construir.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="#parceria"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold text-white bg-[#032029] hover:bg-[#053240] rounded-sm cursor-pointer transition-all shadow-sm"
+              >
+                <span>Conhecer o Modelo Estratégico</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+              <a
+                href="#objetivos"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold text-slate-700 hover:text-slate-950 bg-slate-100 hover:bg-slate-200 rounded-sm cursor-pointer transition-colors"
+              >
+                <span>Explorar Linha PRX</span>
+                <ChevronRight className="w-4 h-4" />
+              </a>
+            </div>
+
+            {/* Assinatura Dual Visual no Hero */}
+            <div className="mt-16 pt-12 border-t border-slate-100 flex flex-wrap items-center justify-center gap-8 sm:gap-16 opacity-90">
+              <div className="flex items-center gap-4">
+                <PRXLogo size="md" showSubtitle={true} className="w-32 sm:w-40" />
+              </div>
+              <div className="h-10 w-px bg-slate-200 hidden sm:block" />
+              <div className="flex items-center gap-4">
+                <W1Logo size="md" showSubtitle={true} className="w-28 sm:w-36" />
               </div>
             </div>
-          </aside>
-
-          {/* ======================================================================= */}
-          {/* CONTEÚDO PRINCIPAL (Barras Horizontais do Padrão F)                     */}
-          {/* ======================================================================= */}
-          <div className="lg:col-span-9 space-y-16 sm:space-y-24">
-            {/* --------------------------------------------------------------------- */}
-            {/* SEÇÃO 01: HERO SECTION (Barra Horizontal Superior do F)               */}
-            {/* --------------------------------------------------------------------- */}
-            <section id="hero" className="scroll-mt-24 space-y-8">
-              {/* Bloco de Animação de Entrada PRX com Queda de Letras em 0.3s */}
-              <div className="p-8 sm:p-12 border border-slate-200 bg-gradient-to-b from-slate-50/80 via-white to-white rounded-sm shadow-xs flex flex-col items-center justify-center text-center relative overflow-hidden">
-                <div className="absolute top-3 right-3 text-[10px] font-mono text-slate-400 uppercase tracking-widest no-print">
-                  ✦ Clique no logo para rever a animação
-                </div>
-
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-14 my-4">
-                  {/* Logo PRX Vetorial em SVG com Queda em 0.6s */}
-                  <div className="flex flex-col items-center">
-                    <PRXLogo size="lg" onClick={() => setShowIntro(true)} />
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#0B67FF] font-semibold mt-3">
-                      Comunidade & Plataforma
-                    </span>
-                  </div>
-
-                  <span className="text-3xl sm:text-4xl font-light text-slate-300 select-none">
-                    ×
-                  </span>
-
-                  {/* Logo B2 Eventos Vetorial em SVG sem Fundo */}
-                  <div className="flex flex-col items-center">
-                    <B2Logo size="lg" onClick={() => setShowIntro(true)} />
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#EA580C] font-semibold mt-3">
-                      Operação & Experiências
-                    </span>
-                  </div>
-                </div>
-
-                {/* Linha de separação técnica */}
-                <div className="w-16 h-[2px] bg-slate-200 my-4" />
-
-                <div className="max-w-2xl text-center space-y-3">
-                  <p className="text-xs uppercase tracking-widest font-mono font-bold text-slate-500">
-                    Aliança Comercial Estratégica
-                  </p>
-                  <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-950 tracking-tight leading-[1.08]">
-                    PRX × B2 EVENTOS
-                  </h1>
-                  <p className="text-lg sm:text-2xl font-medium text-slate-600 max-w-xl mx-auto leading-relaxed pt-1">
-                    A próxima geração precisa de um lugar para acontecer.
-                  </p>
-                </div>
-              </div>
-
-              {/* Tríade de Métricas & Tese Base */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="p-5 border border-slate-200 bg-white rounded-sm">
-                  <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
-                    Comunidade Ativa
-                  </div>
-                  <div className="text-xl font-bold text-slate-900 mt-1">
-                    Geração Z & Escolas
-                  </div>
-                  <div className="text-xs text-slate-500 mt-1">
-                    Influência contínua e presença no dia a dia da juventude.
-                  </div>
-                </div>
-
-                <div className="p-5 border border-slate-200 bg-white rounded-sm">
-                  <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
-                    Operação e Estrutura
-                  </div>
-                  <div className="text-xl font-bold text-slate-900 mt-1">
-                    Autoridade B2
-                  </div>
-                  <div className="text-xs text-slate-500 mt-1">
-                    Execução de eventos memoráveis e experiências de alto impacto.
-                  </div>
-                </div>
-
-                <div className="p-5 border border-slate-200 bg-white rounded-sm">
-                  <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
-                    Modelo de Negócio
-                  </div>
-                  <div className="text-xl font-bold text-slate-900 mt-1">
-                    Geração Recorrente
-                  </div>
-                  <div className="text-xs text-slate-500 mt-1">
-                    Negócios perenes através de produtos, ativações e formaturas.
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            {/* --------------------------------------------------------------------- */}
-            {/* SEÇÃO 02: A OPORTUNIDADE (Segunda Barra Horizontal do F)              */}
-            {/* --------------------------------------------------------------------- */}
-            <section id="oportunidade" className="scroll-mt-24 space-y-6">
-              <div className="border-b border-slate-200 pb-4">
-                <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0B67FF]">
-                  01 / Panorama Estratégico
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight mt-1">
-                  A OPORTUNIDADE
-                </h2>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-                {/* Pilar PRX */}
-                <div className="p-7 border border-slate-200 bg-slate-50/50 rounded-sm flex flex-col justify-between space-y-6">
-                  <div className="space-y-4">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold text-[#0B67FF] bg-blue-50 border border-blue-200 rounded-sm">
-                      <Sparkles className="w-3.5 h-3.5" />
-                      <span>Ecossistema PRX</span>
-                    </div>
-                    <p className="text-base text-slate-700 leading-relaxed">
-                      A <strong>PRX</strong> nasce com uma proposta simples:{" "}
-                      <span className="text-slate-900 font-semibold">
-                        ser o ecossistema da nova geração
-                      </span>
-                      .
-                    </p>
-                    <p className="text-sm text-slate-600 leading-relaxed">
-                      Um aplicativo completo que conecta, em um único ambiente,{" "}
-                      <strong>clube de benefícios</strong>,{" "}
-                      <strong>banco digital</strong>, <strong>investimentos</strong>{" "}
-                      e <strong>experiências exclusivas</strong>, acompanhando o
-                      jovem em diferentes momentos da sua vida diária.
-                    </p>
-                  </div>
-                  <div className="p-4 bg-white border border-slate-200 rounded-sm text-xs font-medium text-slate-800 flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-[#0B67FF]" />
-                    <span>A PRX leva a comunidade engajada.</span>
-                  </div>
-                </div>
-
-                {/* Pilar B2 Eventos */}
-                <div className="p-7 border border-slate-200 bg-slate-50/50 rounded-sm flex flex-col justify-between space-y-6">
-                  <div className="space-y-4">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold text-[#EA580C] bg-orange-50 border border-orange-200 rounded-sm">
-                      <Flame className="w-3.5 h-3.5" />
-                      <span>Autoridade B2 Eventos</span>
-                    </div>
-                    <p className="text-base text-slate-700 leading-relaxed">
-                      A <strong>B2</strong> já domina um território essencial dessa
-                      jornada:{" "}
-                      <span className="text-slate-900 font-semibold">
-                        eventos e experiências presenciais de alto padrão
-                      </span>
-                      .
-                    </p>
-                    <p className="text-sm text-slate-600 leading-relaxed">
-                      A proposta é conectar de forma perene esses dois mundos. O
-                      virtual alimenta o presencial, e cada evento alimenta a
-                      recorrência do aplicativo e dos benefícios dos parceiros.
-                    </p>
-                  </div>
-                  <div className="p-4 bg-white border border-slate-200 rounded-sm text-xs font-medium text-slate-800 flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-[#EA580C]" />
-                    <span>A B2 transforma comunidade em experiência.</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Destaque Sintético Central */}
-              <div className="p-6 bg-slate-950 text-white rounded-sm flex flex-col sm:flex-row items-center justify-between gap-6">
-                <div className="space-y-1">
-                  <div className="text-xs font-mono tracking-widest uppercase text-slate-400">
-                    A Tese Fundamental
-                  </div>
-                  <p className="text-base sm:text-lg font-medium text-slate-200">
-                    "A PRX leva a comunidade. A B2 transforma comunidade em
-                    experiência."
-                  </p>
-                </div>
-                <div className="shrink-0 flex items-center gap-3 font-mono text-xs text-slate-400">
-                  <span className="text-[#0B67FF] font-bold">PRX</span>
-                  <span>+</span>
-                  <span className="text-[#EA580C] font-bold">B2</span>
-                  <span>=</span>
-                  <span className="text-white font-bold">Ecossistema Total</span>
-                </div>
-              </div>
-            </section>
-
-            {/* --------------------------------------------------------------------- */}
-            {/* SEÇÃO 03: QUEM ESTÁ POR TRÁS (Liderança e Conexões)                   */}
-            {/* --------------------------------------------------------------------- */}
-            <section id="quem-somos" className="scroll-mt-24 space-y-6">
-              <div className="border-b border-slate-200 pb-4">
-                <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0B67FF]">
-                  02 / Liderança & Conexões
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight mt-1">
-                  QUEM ESTÁ POR TRÁS
-                </h2>
-              </div>
-
-              <div className="p-8 border border-slate-200 bg-white rounded-sm">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-                  <div className="md:col-span-8 space-y-4">
-                    <div className="flex items-center gap-3">
-                      <h3 className="text-2xl font-bold text-slate-950">
-                        Rafael Molina
-                      </h3>
-                      <span className="text-xs font-medium text-slate-500 bg-slate-100 px-2.5 py-1 rounded-sm">
-                        Jornalista & Empresário
-                      </span>
-                    </div>
-
-                    <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                      Rafael Molina é <strong>jornalista</strong>,{" "}
-                      <strong>empresário</strong> e{" "}
-                      <strong>criador de conteúdo</strong> com forte e consolidada
-                      atuação junto ao público jovem, colégios de ponta e grandes
-                      marcas do mercado nacional.
-                    </p>
-
-                    <p className="text-sm text-slate-600 leading-relaxed">
-                      Essa conexão orgânica deu origem à PRX: transformar
-                      relacionamento e influência em um{" "}
-                      <span className="text-slate-900 font-semibold">
-                        ecossistema capaz de gerar consumo, experiências,
-                        oportunidades e negócios
-                      </span>{" "}
-                      reais para a nova geração.
-                    </p>
-
-                    <p className="text-sm font-semibold text-[#0B67FF]">
-                      Agora, buscamos parceiros estratégicos que queiram crescer e
-                      liderar dentro desse ecossistema.
-                    </p>
-                  </div>
-
-                  <div className="md:col-span-4 p-5 bg-slate-50 border border-slate-200 rounded-sm space-y-3">
-                    <div className="text-xs font-mono uppercase tracking-wider text-slate-400">
-                      Pilares de Influência
-                    </div>
-                    <ul className="space-y-2 text-xs text-slate-700">
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-[#0B67FF] shrink-0" />
-                        <span>Conexão direta com escolas e diretórios</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-[#0B67FF] shrink-0" />
-                        <span>Canal de comunicação jovem de alta tração</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-[#0B67FF] shrink-0" />
-                        <span>Relacionamento com marcas de primeira linha</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-[#0B67FF] shrink-0" />
-                        <span>Criação de formatos autorais para a Gen Z</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            {/* --------------------------------------------------------------------- */}
-            {/* SEÇÃO 04: A PARCERIA ESTRATÉGICA (O Núcleo da Proposta)               */}
-            {/* --------------------------------------------------------------------- */}
-            <section id="parceria" className="scroll-mt-24 space-y-6">
-              <div className="border-b border-slate-200 pb-4">
-                <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0B67FF]">
-                  03 / Estrutura da Parceria
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight mt-1">
-                  A PARCERIA
-                </h2>
-                <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-3xl">
-                  Propomos que a <strong>B2 Eventos</strong> se torne parceira
-                  estratégica da <strong>PRX</strong> para eventos e
-                  experiências, construindo uma relação de geração recorrente de
-                  negócios.
-                </p>
-              </div>
-
-              {/* Seletor Interativo das Duas Vias da Parceria */}
-              <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
-                <button
-                  onClick={() => setActiveTab("prx-b2")}
-                  className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-sm transition-all cursor-pointer ${
-                    activeTab === "prx-b2"
-                      ? "bg-[#0B67FF] text-white shadow-xs"
-                      : "text-slate-600 hover:text-slate-900 bg-slate-100"
-                  }`}
-                >
-                  Via 1: PRX → B2 (Geração de Negócios)
-                </button>
-                <button
-                  onClick={() => setActiveTab("b2-prx")}
-                  className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-sm transition-all cursor-pointer ${
-                    activeTab === "b2-prx"
-                      ? "bg-[#0B67FF] text-white shadow-xs"
-                      : "text-slate-600 hover:text-slate-900 bg-slate-100"
-                  }`}
-                >
-                  Via 2: B2 → PRX (Eventos Proprietários)
-                </button>
-              </div>
-
-              {/* Conteúdo da Via 1: PRX -> B2 */}
-              {activeTab === "prx-b2" && (
-                <div className="space-y-6 animate-fadeIn">
-                  <div className="p-6 border border-blue-200 bg-blue-50/40 rounded-sm">
-                    <h3 className="text-lg font-bold text-slate-950">
-                      PRX → B2: Novo Canal Comercial e de Comunicação
-                    </h3>
-                    <p className="text-sm text-slate-600 mt-1">
-                      A PRX atua como um acelerador ativo de vendas, demanda e
-                      autoridade para o portfólio da B2 Eventos:
-                    </p>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {[
-                      {
-                        title: "Divulgação nas Redes de Rafael Molina",
-                        desc: "Exposição massiva e qualificada dos eventos da B2 para uma audiência jovem e engajada.",
-                      },
-                      {
-                        title: "Realização Preferencial dos Eventos",
-                        desc: "Todos os eventos do calendário PRX priorizam a estrutura e a operação da B2 como parceira.",
-                      },
-                      {
-                        title: "Indicação Direta para Marcas",
-                        desc: "Conexão da B2 com marcas parceiras e patrocinadores comerciais do ecossistema PRX.",
-                      },
-                      {
-                        title: "Aproximação com Escolas & Colégios",
-                        desc: "Acesso aos colégios do relacionamento de Rafael para formaturas, festas e encontros.",
-                      },
-                      {
-                        title: "Geração de Oportunidades Múltiplas",
-                        desc: "Captação contínua para formaturas universitárias, eventos corporativos e encontros escolares.",
-                      },
-                      {
-                        title: "Criação de Projetos para a Geração Z",
-                        desc: "Desenvolvimento conjunto de novos produtos e formatos com a linguagem da nova geração.",
-                      },
-                    ].map((item, idx) => (
-                      <div
-                        key={idx}
-                        className="p-5 border border-slate-200 bg-white rounded-sm hover:border-[#0B67FF]/50 transition-colors"
-                      >
-                        <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#0B67FF] mb-2">
-                          <span>0{idx + 1}</span>
-                          <span className="w-6 h-[1px] bg-blue-300" />
-                        </div>
-                        <h4 className="text-sm font-bold text-slate-900 mb-1">
-                          {item.title}
-                        </h4>
-                        <p className="text-xs text-slate-600 leading-relaxed">
-                          {item.desc}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="p-4 bg-slate-100 border border-slate-200 rounded-sm text-center">
-                    <p className="text-xs font-semibold text-slate-700">
-                      🎯{" "}
-                      <span className="text-slate-900">
-                        Não queremos apenas divulgar a B2.
-                      </span>{" "}
-                      Queremos gerar negócios recorrentes para a B2.
-                    </p>
-                  </div>
-                </div>
-              )}
-
-              {/* Conteúdo da Via 2: B2 -> PRX */}
-              {activeTab === "b2-prx" && (
-                <div className="space-y-6 animate-fadeIn">
-                  <div className="p-6 border border-orange-200 bg-orange-50/40 rounded-sm">
-                    <h3 className="text-lg font-bold text-slate-950">
-                      B2 → PRX: Parceria nos Eventos Proprietários
-                    </h3>
-                    <p className="text-sm text-slate-600 mt-1">
-                      Entrada da B2 como co-produtora e parceira operacional do
-                      calendário autoral da PRX, com divisão de receitas e modelo
-                      comercial pré-definido:
-                    </p>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {[
-                      {
-                        name: "PRX UP",
-                        icon: Coffee,
-                        tag: "Lifestyle & Conexão",
-                        desc: "Coffee party, música, esporte e lifestyle para a juventude urbana.",
-                      },
-                      {
-                        name: "PRX RUN",
-                        icon: Activity,
-                        tag: "Saúde & Performance",
-                        desc: "Corrida e experiência imersiva de bem-estar para a nova geração.",
-                      },
-                      {
-                        name: "PRX FOUNDERS",
-                        icon: Briefcase,
-                        tag: "Empreendedorismo",
-                        desc: "Jovens empreendedores, founders, investidores e novas ideias de negócios.",
-                      },
-                      {
-                        name: "PRX PASS EXPERIENCES",
-                        icon: Ticket,
-                        tag: "Exclusividade",
-                        desc: "Experiências e acessos restritos para membros do clube de benefícios.",
-                      },
-                      {
-                        name: "RESENHA",
-                        icon: Flame,
-                        tag: "Festa Mensal Autoral",
-                        desc: "A cada edição, um jovem diferente assume o papel de host, trazendo sua identidade, seus convidados e sua rede.",
-                      },
-                      {
-                        name: "Modelos Específicos",
-                        icon: TrendingUp,
-                        tag: "Customização",
-                        desc: "Cada projeto conta com modelo de sociedade, divisão de receitas e responsabilidades alinhadas caso a caso.",
-                      },
-                    ].map((item, idx) => {
-                      const IconComponent = item.icon;
-                      return (
-                        <div
-                          key={idx}
-                          className="p-5 border border-slate-200 bg-white rounded-sm hover:border-[#EA580C]/50 transition-colors flex flex-col justify-between"
-                        >
-                          <div>
-                            <div className="flex items-center justify-between mb-3">
-                              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">
-                                {item.tag}
-                              </span>
-                              <IconComponent className="w-4 h-4 text-[#EA580C]" />
-                            </div>
-                            <h4 className="text-base font-bold text-slate-900 mb-1">
-                              {item.name}
-                            </h4>
-                            <p className="text-xs text-slate-600 leading-relaxed">
-                              {item.desc}
-                            </p>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-            </section>
-
-            {/* --------------------------------------------------------------------- */}
-            {/* SEÇÃO 05: B2 DENTRO DO PRX PASS (Presença Permanente no App)          */}
-            {/* --------------------------------------------------------------------- */}
-            <section id="prx-pass" className="scroll-mt-24 space-y-6">
-              <div className="border-b border-slate-200 pb-4">
-                <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0B67FF]">
-                  04 / Presença Contínua
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight mt-1">
-                  B2 DENTRO DO PRX PASS
-                </h2>
-              </div>
-
-              <div className="p-8 border border-slate-200 bg-gradient-to-r from-blue-50/30 via-white to-slate-50/50 rounded-sm">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-                  <div className="md:col-span-8 space-y-4">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold text-[#0B67FF] bg-blue-50 border border-blue-200 rounded-sm">
-                      <Award className="w-3.5 h-3.5" />
-                      <span>Benefício Permanente no Aplicativo</span>
-                    </span>
-
-                    <h3 className="text-xl sm:text-2xl font-bold text-slate-950">
-                      A B2 presente todos os dias no bolso do jovem.
-                    </h3>
-
-                    <p className="text-sm text-slate-700 leading-relaxed">
-                      Queremos transformar a B2 em benefício permanente dentro do
-                      aplicativo PRX. A empresa poderá criar vantagens exclusivas
-                      para membros do <strong>PRX PASS</strong>.
-                    </p>
-
-                    {/* Exemplo de Chamada de Ação no App */}
-                    <div className="p-4 bg-white border border-blue-200 rounded-sm shadow-2xs">
-                      <p className="text-xs font-mono uppercase text-[#0B67FF] font-bold">
-                        Exemplo de Ativação no PRX PASS:
-                      </p>
-                      <p className="text-sm font-semibold text-slate-900 mt-1 italic">
-                        “Faça seu evento com a B2 através da PRX e ganhe 10% de
-                        benefício na decoração.”
-                      </p>
-                    </div>
-
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      Descontos, upgrades, experiências VIP e condições especiais
-                      podem ser desenvolvidos em conjunto. Assim, a B2 deixa de
-                      aparecer para o jovem apenas quando ele procura um evento:{" "}
-                      <span className="text-slate-900 font-semibold">
-                        ela passa a fazer parte do ecossistema diário dele
-                      </span>
-                      .
-                    </p>
-                  </div>
-
-                  <div className="md:col-span-4 p-5 bg-white border border-slate-200 rounded-sm space-y-4 text-center">
-                    <div className="text-xs font-mono uppercase tracking-wider text-slate-400">
-                      Vantagem Estratégica
-                    </div>
-                    <div className="text-3xl font-black text-slate-900">
-                      365 dias
-                    </div>
-                    <p className="text-xs text-slate-500">
-                      Presença constante da marca B2 no cotidiano do jovem,
-                      antecipando o momento da decisão da formatura ou festa.
-                    </p>
-                    <div className="pt-3 border-t border-slate-100 flex items-center justify-center gap-2 text-xs font-semibold text-[#0B67FF]">
-                      <CheckCircle2 className="w-4 h-4" />
-                      <span>Fidelização e LTV Ampliado</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            {/* --------------------------------------------------------------------- */}
-            {/* SEÇÃO 06: PRX × B2 × ESCOLAS (A Terceira Frente)                      */}
-            {/* --------------------------------------------------------------------- */}
-            <section id="escolas" className="scroll-mt-24 space-y-6">
-              <div className="border-b border-slate-200 pb-4">
-                <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0B67FF]">
-                  05 / Expansão Escolar
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight mt-1">
-                  PRX × B2 × ESCOLAS
-                </h2>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-                <div className="md:col-span-7 space-y-4">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold text-slate-800 bg-slate-100 border border-slate-200 rounded-sm">
-                    <School className="w-3.5 h-3.5 text-[#0B67FF]" />
-                    <span>Canal Institucional Escolar</span>
-                  </div>
-
-                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                    A relação de Rafael com escolas e colégios abre uma terceira
-                    frente de imenso valor comercial. Queremos levar a B2 para
-                    dentro das instituições através de ativações, experiências e
-                    projetos especiais.
-                  </p>
-
-                  <div className="p-5 border border-slate-200 bg-white rounded-sm space-y-2">
-                    <div className="flex items-center gap-2 text-xs font-mono font-bold text-slate-900">
-                      <Zap className="w-4 h-4 text-[#0B67FF]" />
-                      <span>Exemplo de Formato: PRX BREAK</span>
-                    </div>
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      Intervenções rápidas e vibrantes no horário de
-                      intervalo/almoço, unindo <strong>música</strong>,{" "}
-                      <strong>tecnologia</strong>,{" "}
-                      <strong>empreendedorismo</strong>, novos talentos e
-                      experiências de marca.
-                    </p>
-                  </div>
-
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    A partir daí, PRX e B2 podem desenvolver novos formatos
-                    proprietários para o ambiente escolar — transformando esse
-                    relacionamento direto em{" "}
-                    <strong className="text-slate-900">
-                      futuras oportunidades de formaturas e grandes eventos
-                    </strong>
-                    .
-                  </p>
-                </div>
-
-                <div className="md:col-span-5 p-6 border border-slate-200 bg-slate-50/60 rounded-sm space-y-4">
-                  <h4 className="text-xs font-mono uppercase tracking-wider text-slate-500 font-bold">
-                    Ciclo de Conversão Escolar
-                  </h4>
-                  <div className="space-y-3 text-xs">
-                    <div className="p-3 bg-white border border-slate-200 rounded-sm">
-                      <span className="font-bold text-slate-900 block">
-                        Passo 1: Presença Orgânica
-                      </span>
-                      <span className="text-slate-500 text-[11px]">
-                        Ativações e breaks no cotidiano dos alunos.
-                      </span>
-                    </div>
-                    <div className="p-3 bg-white border border-slate-200 rounded-sm">
-                      <span className="font-bold text-slate-900 block">
-                        Passo 2: Download do PRX PASS
-                      </span>
-                      <span className="text-slate-500 text-[11px]">
-                        Engajamento da comissão de formatura no ecossistema.
-                      </span>
-                    </div>
-                    <div className="p-3 bg-white border border-slate-200 rounded-sm">
-                      <span className="font-bold text-slate-900 block">
-                        Passo 3: Fechamento com B2
-                      </span>
-                      <span className="text-slate-500 text-[11px]">
-                        Contratação de formatura ou evento com benefício exclusivo.
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            {/* --------------------------------------------------------------------- */}
-            {/* SEÇÃO 07: A VISÃO (Fechamento Monumental e Assinatura)                */}
-            {/* --------------------------------------------------------------------- */}
-            <section
-              id="visao"
-              className="scroll-mt-24 p-8 sm:p-14 border border-slate-900 bg-slate-950 text-white rounded-sm space-y-8"
-            >
-              <div className="space-y-3">
-                <span className="text-xs font-mono uppercase tracking-widest text-[#00D2FF] font-bold">
-                  06 / O Próximo Nível
-                </span>
-                <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-                  A VISÃO
-                </h2>
-              </div>
-
-              <div className="space-y-5 text-slate-300 text-sm sm:text-base leading-relaxed max-w-3xl">
-                <p className="text-lg sm:text-xl font-medium text-white leading-relaxed">
-                  Esta não é uma proposta para fazer um evento juntos.
-                </p>
-                <p>
-                  É uma proposta para construir um{" "}
-                  <strong className="text-white">
-                    fluxo permanente de negócios
-                  </strong>{" "}
-                  entre a PRX, a B2 Eventos, escolas, marcas de peso e uma nova
-                  geração de consumidores que busca experiências autênticas.
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                  <div className="p-4 bg-slate-900/80 border border-slate-800 rounded-sm">
-                    <span className="text-xs font-mono uppercase text-[#EA580C] font-bold block mb-1">
-                      A Força da B2
-                    </span>
-                    <p className="text-xs text-slate-400">
-                      Tem a estrutura, o know-how e a excelência operacional para
-                      fazer acontecer.
-                    </p>
-                  </div>
-                  <div className="p-4 bg-slate-900/80 border border-slate-800 rounded-sm">
-                    <span className="text-xs font-mono uppercase text-[#00D2FF] font-bold block mb-1">
-                      A Força da PRX
-                    </span>
-                    <p className="text-xs text-slate-400">
-                      Está construindo a comunidade, os produtos digitais e o
-                      relacionamento íntimo com quem vem depois.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Manifesto Central */}
-              <div className="pt-6 border-t border-slate-800 space-y-3 text-center sm:text-left">
-                <p className="text-sm font-mono uppercase tracking-widest text-slate-400">
-                  B2 faz eventos. PRX conecta uma geração.
-                </p>
-                <p className="text-2xl sm:text-3xl font-extrabold text-white">
-                  Juntas, podemos criar onde essa geração vai acontecer.
-                </p>
-                <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-6">
-                  <div className="text-xl sm:text-2xl font-black tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-white via-[#00D2FF] to-[#7928CA]">
-                    PRX × B2
-                  </div>
-                  <div className="text-sm sm:text-base font-mono font-bold tracking-widest text-[#00D2FF]">
-                    THE NXT PLACE IS PRX.
-                  </div>
-                </div>
-              </div>
-
-              {/* Gatilho de Ação Final */}
-              <div className="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 no-print">
-                <div className="text-xs text-slate-400 text-center sm:text-left">
-                  Pronto para transformar essa aliança em resultados práticos?
-                </div>
-                <div className="flex items-center justify-end w-full sm:w-auto">
-                  <button
-                    onClick={handlePrint}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#7928CA] to-[#0066FF] hover:brightness-110 rounded-sm transition-all shadow-md active:scale-[0.98] cursor-pointer"
-                  >
-                    <FileDown className="w-4 h-4" />
-                    <span>Salvar / Exportar Proposta em PDF</span>
-                  </button>
-                </div>
-              </div>
-            </section>
           </div>
-        </div>
+        </section>
+
+        {/* ======================================================================= */}
+        {/* 3. A OPORTUNIDADE                                                       */}
+        {/* ======================================================================= */}
+        <section id="oportunidade" className="py-20 sm:py-28 bg-[#fafafa] border-b border-slate-200/80">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mb-14">
+              <span className="text-xs font-mono font-medium tracking-widest text-[#032029] uppercase">
+                01 • Cenário & Ecossistema
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-light text-slate-950 tracking-tight mt-2 mb-4">
+                A Oportunidade
+              </h2>
+              <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+                A PRX nasce como um ecossistema digital desenvolvido para a Geração Z, conectando benefícios,
+                experiências, empreendedorismo, serviços financeiros, investimentos, saúde mental e novas formas
+                de relacionamento.
+              </p>
+            </div>
+
+            {/* Grid Tríptico de Pilares */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-white p-8 border border-slate-200 rounded-sm shadow-xs flex flex-col justify-between">
+                <div>
+                  <div className="w-10 h-10 rounded-sm bg-slate-100 flex items-center justify-center text-[#032029] mb-5">
+                    <Compass className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-slate-900 mb-2">Vertical PRX INVEST</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Dentro do ecossistema, o PRX INVEST será a vertical dedicada à construção da vida
+                    financeira e patrimonial dos jovens desde o primeiro real.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-slate-100 text-xs font-mono text-slate-500 uppercase">
+                  Foco: Geração Z
+                </div>
+              </div>
+
+              <div className="bg-white p-8 border border-slate-200 rounded-sm shadow-xs flex flex-col justify-between">
+                <div>
+                  <div className="w-10 h-10 rounded-sm bg-slate-100 flex items-center justify-center text-[#032029] mb-5">
+                    <Target className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-slate-900 mb-2">Jornada de Transformação</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Nossa proposta não é criar mais uma prateleira estéril de investimentos, e sim construir
+                    uma jornada que transforme jovens consumidores em jovens investidores.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-slate-100 text-xs font-mono text-slate-500 uppercase">
+                  Método: Objetivos Reais
+                </div>
+              </div>
+
+              <div className="bg-white p-8 border border-slate-200 rounded-sm shadow-xs flex flex-col justify-between">
+                <div>
+                  <div className="w-10 h-10 rounded-sm bg-slate-100 flex items-center justify-center text-[#032029] mb-5">
+                    <Sparkles className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-slate-900 mb-2">Linguagem do Futuro</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Falando de dinheiro a partir dos objetivos dos jovens, da sua própria linguagem cultural e
+                    do futuro concreto que desejam construir ativamente.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-slate-100 text-xs font-mono text-slate-500 uppercase">
+                  Voz: Conexão Cultural
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ======================================================================= */}
+        {/* 4. PRX INVEST × W1 (A PARCERIA ESTRATÉGICA)                            */}
+        {/* ======================================================================= */}
+        <section id="parceria" className="py-20 sm:py-28 bg-white border-b border-slate-200/80">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mb-14">
+              <span className="text-xs font-mono font-medium tracking-widest text-[#032029] uppercase">
+                02 • Aliança Estratégica
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-light text-slate-950 tracking-tight mt-2 mb-4">
+                PRX INVEST × W1
+              </h2>
+              <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+                A proposta é avaliar a W1 como parceira estratégica de inteligência e planejamento financeiro
+                do PRX INVEST, participando ativamente da construção da jornada financeira oferecida à
+                comunidade PRX.
+              </p>
+            </div>
+
+            {/* Matriz de Competências Complementares */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+              {/* O que a PRX entrega */}
+              <div className="bg-[#fafafa] p-8 sm:p-10 border border-slate-200 rounded-sm">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-9 h-9 rounded-sm bg-[#032029] text-white flex items-center justify-center font-mono text-xs font-bold">
+                    PRX
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-slate-900">A PRX entra com:</h3>
+                    <p className="text-xs text-slate-500 font-mono">Comunidade, Plataforma e Distribuição</p>
+                  </div>
+                </div>
+
+                <ul className="space-y-4">
+                  {[
+                    "Audiência jovem qualificada e engajada",
+                    "Comunidade vibrante e canais proprietários",
+                    "Tecnologia moderna e ecossistema digital",
+                    "Linguagem autêntica e sem barreira de 'financês'",
+                    "Capacidade massiva de distribuição",
+                    "Experiência nativa Gen Z em todos os pontos de contato",
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-sm text-slate-700">
+                      <CheckCircle2 className="w-4 h-4 text-[#032029] shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* O que a W1 entrega */}
+              <div className="bg-[#fafafa] p-8 sm:p-10 border border-slate-200 rounded-sm">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-9 h-9 rounded-sm bg-[#032029] text-white flex items-center justify-center font-mono text-xs font-bold">
+                    W1
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-slate-900">A W1 entra com:</h3>
+                    <p className="text-xs text-slate-500 font-mono">Planejamento, Inteligência & Metodologia</p>
+                  </div>
+                </div>
+
+                <ul className="space-y-4">
+                  {[
+                    "Expertise financeira consolidada de ponta",
+                    "Metodologia proprietária de planejamento patrimonial",
+                    "Curadoria técnica de carteiras e alocações",
+                    "Educação financeira estruturada para cada fase",
+                    "Estrutura e know-how de assessoria de alta performance",
+                    "Parceiros habilitados para os serviços e produtos aplicáveis",
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-sm text-slate-700">
+                      <CheckCircle2 className="w-4 h-4 text-[#032029] shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Aviso Regulatório Institucional */}
+            <div className="p-5 border border-slate-200 bg-slate-50/70 rounded-sm flex items-start gap-4">
+              <ShieldCheck className="w-5 h-5 text-slate-500 shrink-0 mt-0.5" />
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                <strong className="text-slate-900">Conformidade e Segurança Regulatória:</strong> A distribuição
+                e execução de produtos de investimento deverão ocorrer estritamente por meio das instituições
+                devidamente habilitadas e dentro de todas as exigências regulatórias aplicáveis (CVM, Anbima e Banco Central).
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ======================================================================= */}
+        {/* 5. INVESTIMENTO POR OBJETIVOS, NÃO POR "FINANCÊS"                       */}
+        {/* ======================================================================= */}
+        <section id="objetivos" className="py-20 sm:py-28 bg-[#fafafa] border-b border-slate-200/80">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mb-12">
+              <span className="text-xs font-mono font-medium tracking-widest text-[#032029] uppercase">
+                03 • Nova Lógica de Mercado
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-light text-slate-950 tracking-tight mt-2 mb-4">
+                Investimento por Objetivos, não por “Financês”
+              </h2>
+              <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+                Queremos inverter a lógica tradicional do mercado. O jovem não acorda pensando “quero comprar
+                um ETF”, “renda fixa” ou “previdência”. Ele pensa: <em className="text-slate-900 font-medium">“Quero viajar. Quero meu primeiro carro. Quero meu apê. Quero empreender. Quero liberdade.”</em>
+              </p>
+            </div>
+
+            {/* Frase em Destaque */}
+            <div className="mb-12 p-6 sm:p-8 bg-white border-l-4 border-[#032029] border-y border-r border-slate-200 rounded-sm shadow-xs">
+              <p className="text-base sm:text-lg text-slate-800 font-light italic leading-relaxed">
+                “Em vez da linguagem tradicional — renda fixa, multimercado, RV, previdência — criamos
+                ‘objetivos de vida’ e, por trás deles, o parceiro financeiro disponibiliza os produtos adequados.
+                A PRX transforma o objetivo em porta de entrada para educação financeira e investimento.”
+              </p>
+            </div>
+
+            {/* Showcase Interativo da Linha PRX */}
+            <div className="bg-white border border-slate-200 rounded-sm shadow-xs overflow-hidden">
+              {/* Header do Showcase */}
+              <div className="p-6 border-b border-slate-200 bg-slate-50/70 flex flex-wrap items-center justify-between gap-4">
+                <div>
+                  <h3 className="text-base font-semibold text-slate-900">Catálogo Oficial: Linha PRX</h3>
+                  <p className="text-xs text-slate-500 font-mono">
+                    Conceitos de Vida × Produtos Possíveis por Trás
+                  </p>
+                </div>
+                <span className="text-xs font-mono px-3 py-1 bg-white border border-slate-200 rounded-sm text-slate-600">
+                  9 Linhas de Objetivos
+                </span>
+              </div>
+
+              {/* Grid / Tabela da Linha PRX */}
+              <div className="divide-y divide-slate-100">
+                {objectivesList.map((item) => {
+                  const Icon = item.icon;
+                  const isSelected = activeObjectiveTab === item.id;
+                  return (
+                    <div
+                      key={item.id}
+                      onClick={() => setActiveObjectiveTab(item.id)}
+                      className={`p-5 sm:p-6 transition-colors cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-4 ${
+                        isSelected ? "bg-slate-50/90" : "hover:bg-slate-50/50"
+                      }`}
+                    >
+                      <div className="flex items-center gap-4">
+                        <div
+                          className={`w-11 h-11 rounded-sm flex items-center justify-center shrink-0 transition-colors ${
+                            isSelected ? "bg-[#032029] text-white" : "bg-slate-100 text-slate-700"
+                          }`}
+                        >
+                          <Icon className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs font-mono font-bold tracking-wider text-slate-900">
+                              {item.title}
+                            </span>
+                            <span className="text-[10px] font-mono uppercase px-2 py-0.5 bg-slate-200/70 text-slate-600 rounded-xs">
+                              {item.tag}
+                            </span>
+                          </div>
+                          <h4 className="text-sm sm:text-base font-medium text-slate-800 mt-0.5">
+                            {item.concept}
+                          </h4>
+                          <p className="text-xs text-slate-500 mt-1 max-w-xl">{item.desc}</p>
+                        </div>
+                      </div>
+
+                      <div className="md:text-right shrink-0">
+                        <span className="text-xs text-slate-400 font-mono block">Produtos por trás:</span>
+                        <span className="text-xs sm:text-sm font-semibold text-[#032029] font-mono">
+                          {item.products}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ======================================================================= */}
+        {/* 6. PRX FIRST 100                                                        */}
+        {/* ======================================================================= */}
+        <section id="first100" className="py-20 sm:py-28 bg-white border-b border-slate-200/80">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mb-14">
+              <span className="text-xs font-mono font-medium tracking-widest text-[#032029] uppercase">
+                04 • Jornada Proprietária
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-light text-slate-950 tracking-tight mt-2 mb-4">
+                PRX FIRST 100
+              </h2>
+              <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+                Propomos uma jornada proprietária de entrada: <strong>Seus primeiros R$ 100 investidos</strong>.
+                Uma experiência de educação financeira prática que ensina risco, diversificação, juros
+                compostos, reserva de emergência e visão de longo prazo.
+              </p>
+            </div>
+
+            {/* Milestones de Gamificação Positiva */}
+            <div className="bg-[#fafafa] p-8 sm:p-12 border border-slate-200 rounded-sm mb-8">
+              <div className="text-center max-w-2xl mx-auto mb-10">
+                <span className="text-xs font-mono text-[#032029] uppercase tracking-wider font-semibold">
+                  Evolução em Milestones Patrimoniais
+                </span>
+                <h3 className="text-xl sm:text-2xl font-light text-slate-900 mt-1">
+                  Não queremos gamificar especulação. <br />
+                  <span className="font-semibold text-[#032029]">Queremos gamificar disciplina financeira.</span>
+                </h3>
+              </div>
+
+              {/* Trilha de Milestones */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {[
+                  {
+                    step: "Milestone 1",
+                    value: "R$ 100",
+                    title: "O Ponto de Partida",
+                    desc: "Quebra da barreira psicológica de investir pela primeira vez e aprender a operar.",
+                  },
+                  {
+                    step: "Milestone 2",
+                    value: "R$ 1.000",
+                    title: "A Reserva Inicial",
+                    desc: "Primeiro hábito consolidado. Compreensão de liquidez e previsibilidade de retorno.",
+                  },
+                  {
+                    step: "Milestone 3",
+                    value: "R$ 5.000",
+                    title: "Acelerador Patrimonial",
+                    desc: "Início da diversificação ativa entre classes de ativos e primeiros dividendos perceptíveis.",
+                  },
+                  {
+                    step: "Milestone 4",
+                    value: "R$ 10.000",
+                    title: "Jovem Investidor Pleno",
+                    desc: "Consolidação de mentalidade investidora com horizonte de independência e maturidade.",
+                  },
+                ].map((m, idx) => (
+                  <div key={idx} className="bg-white p-6 border border-slate-200 rounded-sm flex flex-col justify-between">
+                    <div>
+                      <span className="text-[11px] font-mono text-slate-400 uppercase tracking-widest">
+                        {m.step}
+                      </span>
+                      <div className="text-2xl sm:text-3xl font-mono font-semibold text-[#032029] my-2">
+                        {m.value}
+                      </div>
+                      <h4 className="text-sm font-semibold text-slate-900 mb-1">{m.title}</h4>
+                      <p className="text-xs text-slate-500 leading-relaxed">{m.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ======================================================================= */}
+        {/* 7. DO ANTI-BET AO INVESTIDOR                                            */}
+        {/* ======================================================================= */}
+        <section id="anti-bet" className="py-20 sm:py-28 bg-[#fafafa] border-b border-slate-200/80">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              <div className="lg:col-span-7">
+                <span className="text-xs font-mono font-medium tracking-widest text-[#032029] uppercase">
+                  05 • Posição Cultural
+                </span>
+                <h2 className="text-2xl sm:text-4xl font-light text-slate-950 tracking-tight mt-2 mb-6">
+                  Do Anti-Bet ao Investidor
+                </h2>
+                <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-6">
+                  Este é um dos territórios mais importantes da PRX. Enquanto boa parte da economia digital
+                  disputa a atenção do jovem oferecendo gratificação imediata e riscos destrutivos, queremos
+                  construir uma narrativa firme na direção oposta:
+                </p>
+
+                <div className="p-6 bg-white border border-slate-200 rounded-sm mb-6">
+                  <span className="text-2xl sm:text-3xl font-light text-slate-900 tracking-tight block">
+                    Menos aposta. <span className="font-semibold text-[#032029]">Mais patrimônio.</span>
+                  </span>
+                  <p className="text-sm text-slate-600 mt-2">
+                    Dentro do ecossistema PRX, comportamentos financeiros positivos poderão gerar
+                    reconhecimento, benefícios e experiências exclusivas.
+                  </p>
+                </div>
+
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                  A mensagem é simples e poderosa:{" "}
+                  <strong className="text-slate-900">
+                    não gastar pode valer. Poupar pode valer. Investir no próprio futuro pode valer.
+                  </strong>
+                </p>
+              </div>
+
+              {/* Visual de Comparativo Anti-Bet */}
+              <div className="lg:col-span-5 bg-white p-8 border border-slate-200 rounded-sm shadow-xs">
+                <span className="text-xs font-mono text-slate-400 uppercase tracking-wider block mb-4">
+                  Opostos Conceituais
+                </span>
+                <div className="space-y-4">
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-sm">
+                    <span className="text-xs font-mono text-slate-500 uppercase block">Cultura de Apostas</span>
+                    <span className="text-sm font-semibold text-slate-700 block mt-1">Gratificação Imediata</span>
+                    <p className="text-xs text-slate-500 mt-0.5">Expectativa irreal, ilusão de atalho e perda de capital.</p>
+                  </div>
+                  <div className="text-center font-mono text-xs text-slate-300">VS</div>
+                  <div className="p-4 bg-slate-50 border border-slate-900 rounded-sm">
+                    <span className="text-xs font-mono text-[#032029] uppercase font-bold block">Cultura PRX × W1</span>
+                    <span className="text-sm font-semibold text-[#032029] block mt-1">Construção Patrimonial</span>
+                    <p className="text-xs text-slate-600 mt-0.5">Disciplina, juros compostos, conquistas reais e LTV duradouro.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ======================================================================= */}
+        {/* 8. EDUCAÇÃO FINANCEIRA W1 × PRX & PRX FOUNDERS                          */}
+        {/* ======================================================================= */}
+        <section className="py-20 sm:py-28 bg-white border-b border-slate-200/80">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Educação Financeira */}
+            <div className="mb-20">
+              <div className="max-w-3xl mb-12">
+                <span className="text-xs font-mono font-medium tracking-widest text-[#032029] uppercase">
+                  06 • Formação & Conteúdo
+                </span>
+                <h2 className="text-2xl sm:text-4xl font-light text-slate-950 tracking-tight mt-2 mb-4">
+                  Educação Financeira W1 × PRX
+                </h2>
+                <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+                  A parceria também extrapola o aplicativo. A W1 participará de conteúdos e experiências
+                  proprietárias voltadas à nova geração, transformando educação financeira em cultura jovem:
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="bg-[#fafafa] p-8 border border-slate-200 rounded-sm">
+                  <span className="text-xs font-mono text-[#032029] uppercase font-bold block mb-2">Formato 1</span>
+                  <h3 className="text-lg font-semibold text-slate-900 mb-2">PRX MONEY TALKS</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Conversas rápidas, dinâmicas e sem rodeios sobre dinheiro, investimentos e decisões do
+                    dia a dia jovem.
+                  </p>
+                </div>
+
+                <div className="bg-[#fafafa] p-8 border border-slate-200 rounded-sm">
+                  <span className="text-xs font-mono text-[#032029] uppercase font-bold block mb-2">Formato 2</span>
+                  <h3 className="text-lg font-semibold text-slate-900 mb-2">PRX MONEY SESSIONS</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Encontros presenciais com jovens sobre planejamento financeiro, independência e
+                    construção de patrimônio.
+                  </p>
+                </div>
+
+                <div className="bg-[#fafafa] p-8 border border-slate-200 rounded-sm">
+                  <span className="text-xs font-mono text-[#032029] uppercase font-bold block mb-2">Formato 3</span>
+                  <h3 className="text-lg font-semibold text-slate-900 mb-2">W1 Experts × PRX</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Especialistas traduzindo temas complexos para uma linguagem que faça real sentido para um
+                    jovem de 16, 18 ou 20 anos.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* PRX FOUNDERS × W1 */}
+            <div className="pt-16 border-t border-slate-200">
+              <div className="max-w-3xl mb-12">
+                <span className="text-xs font-mono font-medium tracking-widest text-[#032029] uppercase">
+                  07 • Jovens Empreendedores
+                </span>
+                <h2 className="text-2xl sm:text-4xl font-light text-slate-950 tracking-tight mt-2 mb-4">
+                  PRX FOUNDERS × W1
+                </h2>
+                <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+                  Existe ainda uma segunda conexão estratégica: a vertical dedicada à identificação e conexão
+                  de jovens empreendedores. Founders poderão cadastrar seus negócios, apresentar seus modelos
+                  e participar de mentorias e networking.
+                </p>
+              </div>
+
+              <div className="bg-[#fafafa] p-8 sm:p-10 border border-slate-200 rounded-sm">
+                <h3 className="text-lg font-semibold text-slate-900 mb-3">
+                  Inteligência Financeira para Founders:
+                </h3>
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+                  A W1 poderá participar desse ecossistema oferecendo conteúdo e assessoria técnica em temas
+                  críticos: finanças pessoais do founder, organização patrimonial, planejamento, valuation,
+                  captação e separação rigorosa entre patrimônio pessoal e empresarial.
+                </p>
+                <div className="p-4 bg-white border border-slate-200 rounded-sm text-sm text-[#032029] font-medium">
+                  “Estamos formando não apenas futuros investidores. Estamos nos aproximando também de futuros
+                  empresários e futuros clientes de alta renda.”
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ======================================================================= */}
+        {/* 9. A TESE & CONCLUSÃO ESTRATÉGICA                                      */}
+        {/* ======================================================================= */}
+        <section id="tese" className="py-20 sm:py-28 bg-[#fafafa] border-b border-slate-200/80">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span className="text-xs font-mono font-medium tracking-widest text-[#032029] uppercase">
+              08 • Conclusão Estratégica
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-light text-slate-950 tracking-tight mt-2 mb-8">
+              A Tese
+            </h2>
+
+            <div className="text-left bg-white p-8 sm:p-12 border border-slate-200 rounded-sm shadow-xs mb-12 space-y-6 text-base sm:text-lg text-slate-700 leading-relaxed">
+              <p>
+                O jovem de hoje pode ainda não possuir grande patrimônio. Mas esse não é o ponto.
+              </p>
+              <p>
+                Ele pode ser o empresário, executivo, profissional liberal, investidor ou founder de alta
+                renda dos próximos dez anos. Por isso, acreditamos que existe uma oportunidade singular de{" "}
+                <strong className="text-slate-950">construir relacionamento antes do patrimônio</strong>.
+              </p>
+              <p>
+                Não queremos disputar apenas o AUM de hoje. Queremos{" "}
+                <strong className="text-[#032029]">construir o LTV da próxima geração</strong>.
+              </p>
+              <p>
+                A W1 possui conhecimento financeiro e excelência de planejamento. A PRX possui acesso,
+                linguagem e conexão profunda com essa geração.
+              </p>
+              <p className="font-semibold text-slate-950 pt-2 border-t border-slate-100">
+                Juntos, podemos começar a formar o cliente do futuro antes que o mercado financeiro comece a
+                disputá-lo.
+              </p>
+            </div>
+
+            {/* Manifesto Final */}
+            <div className="py-10 px-6 border border-slate-200 bg-white rounded-sm mb-12">
+              <div className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-3">
+                PRX × W1 CONSULTORIA FINANCEIRA
+              </div>
+              <blockquote className="text-2xl sm:text-3xl font-light tracking-tight text-slate-900 mb-4">
+                “We don't sell investments to Gen Z. <br />
+                <span className="font-semibold text-[#032029]">We build Gen Z investors.”</span>
+              </blockquote>
+              <div className="text-xs font-mono font-medium text-slate-500 uppercase tracking-widest">
+                PRX — the next pays
+              </div>
+            </div>
+
+            {/* Botões de Ação na Conclusão */}
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <button
+                type="button"
+                onClick={() => setShowIntro(true)}
+                className="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-white bg-[#032029] hover:bg-[#053240] rounded-sm cursor-pointer transition-all shadow-sm"
+              >
+                <Play className="w-4 h-4 fill-current" />
+                <span>Rever Apresentação da Marca</span>
+              </button>
+              <button
+                type="button"
+                onClick={handlePrint}
+                className="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-slate-700 hover:text-slate-950 bg-slate-100 hover:bg-slate-200 rounded-sm cursor-pointer transition-colors"
+              >
+                <Printer className="w-4 h-4" />
+                <span>Imprimir / Salvar PDF</span>
+              </button>
+            </div>
+          </div>
+        </section>
       </main>
 
       {/* ========================================================================= */}
-      {/* RODAPÉ OFICIAL (Com Assinatura ViraWeb & viraweb3.png)                    */}
+      {/* 10. RODAPÉ INSTITUCIONAL                                                  */}
       {/* ========================================================================= */}
-      <footer className="border-t border-slate-200 bg-slate-50/70 py-12 mt-16 no-print">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
-            {/* Logos da Parceria no Rodapé */}
-            <div className="flex items-center gap-4">
-              <PRXLogo size="sm" animated={false} className="w-20" />
-              <span className="text-slate-300 text-sm">×</span>
-              <B2Logo size="sm" animated={false} className="w-16" />
-              <span className="text-xs text-slate-500 font-medium border-l border-slate-200 pl-4 ml-2">
-                © 2026 Aliança PRX & B2 Eventos. Todos os direitos reservados.
-              </span>
-            </div>
+      <footer className="py-12 bg-white border-t border-slate-200 text-slate-500 text-xs">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <PRXLogo size="sm" showSubtitle={false} className="w-20" />
+            <span className="text-slate-300 text-lg">×</span>
+            <W1Logo size="sm" showSubtitle={false} className="w-16" />
+          </div>
 
-            {/* Assinatura Mandatória: Desenvolvido por ViraWeb com viraweb3.png */}
-            <div className="flex items-center gap-3">
-              <span className="text-xs text-slate-500 font-medium">
-                Desenvolvido por
-              </span>
-              <VirawebLogo size="md" />
-            </div>
+          <div className="text-center sm:text-right">
+            <p className="font-mono text-slate-600">
+              PRX INVEST × W1 CONSULTORIA FINANCEIRA • 2026
+            </p>
+            <p className="text-slate-400 mt-1">
+              Documento estratégico de proposta institucional. Todos os direitos reservados.
+            </p>
           </div>
         </div>
       </footer>
