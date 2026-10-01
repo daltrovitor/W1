@@ -214,12 +214,14 @@ export default function IntroSplash({ isOpen, onClose }: IntroSplashProps) {
             >
               <text
                 x="336"
-                y="465"
+                y="464"
                 textAnchor="middle"
-                fill="#032029"
-                fontFamily="Arial, sans-serif"
-                fontSize="28"
-                fontWeight="500"
+                fill="#0B0B10"
+                fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+                fontSize="32"
+                fontWeight="600"
+                letterSpacing="0.22em"
+                className="select-none"
               >
                 the next pays
               </text>

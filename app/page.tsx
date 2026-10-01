@@ -4,6 +4,7 @@
 import React, { useState } from "react";
 import PRXLogo from "./components/PRXLogo";
 import W1Logo from "./components/W1Logo";
+import PRXAppIcon from "./components/PRXAppIcon";
 import IntroSplash from "./components/IntroSplash";
 import {
   ArrowRight,
@@ -253,17 +254,14 @@ export default function ProposalPage() {
             </div>
 
             {/* Assinatura Dual Visual no Hero */}
-            <div className="mt-16 pt-12 border-t border-slate-100 flex flex-wrap items-center justify-center gap-8 sm:gap-16 opacity-90">
-              <div className="flex flex-col items-center gap-1">
-                <PRXLogo size="md" showSubtitle={false} className="w-32 sm:w-40" />
-                <span className="text-[10px] sm:text-xs font-medium tracking-wide text-slate-500">the next pays</span>
+            <div className="mt-16 pt-12 border-t border-slate-100 flex flex-wrap items-center justify-center gap-8 sm:gap-14 opacity-95">
+              <div className="flex items-center gap-3">
+                <PRXLogo size="md" showSubtitle={true} className="w-32 sm:w-40" />
               </div>
-              <img
-                src="https://prx.app.br/brand/prx-app-icon.svg/"
-                alt=""
-                aria-hidden="true"
-                className="w-9 h-9 sm:w-11 sm:h-11 object-contain"
-              />
+              <div className="flex items-center justify-center">
+                <PRXAppIcon size={38} />
+              </div>
+              <div className="h-10 w-px bg-slate-200 hidden sm:block" />
               <div className="flex items-center gap-4">
                 <W1Logo size="md" showSubtitle={true} className="w-28 sm:w-36" />
               </div>
@@ -822,39 +820,56 @@ export default function ProposalPage() {
       </main>
 
       {/* ========================================================================= */}
-      {/* 10. RODAPÉ INSTITUCIONAL                                                  */}
+      {/* 10. RODAPÉ INSTITUCIONAL (FINTECH / FARIA LIMA PREMIUM)                   */}
       {/* ========================================================================= */}
-      <footer className="border-t border-slate-200 bg-white text-slate-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
-          <div className="flex items-center gap-3 text-sm sm:text-base font-semibold text-slate-900">
-            <img
-              src="https://prx.app.br/brand/prx-app-icon.svg/"
-              alt=""
-              aria-hidden="true"
-              className="w-8 h-8 object-contain"
-            />
-            <p>© 2026 PRX. Todos os direitos reservados.</p>
-          </div>
-          <p className="mt-2 text-sm sm:text-base font-medium text-slate-700">PRX — the next pays.</p>
+      <footer className="border-t border-slate-200/80 bg-white text-slate-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          {/* Rodapé Principal (Primeiras Linhas + Identidade) */}
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-8 border-b border-slate-100">
+            <div>
+              <div className="flex items-center gap-3 mb-2">
+                <PRXAppIcon size={32} />
+                <p className="text-sm sm:text-base font-semibold text-slate-900 tracking-tight">
+                  © 2026 PRX. Todos os direitos reservados.
+                </p>
+              </div>
+              <p className="text-xs sm:text-sm font-mono font-medium text-slate-600 tracking-wider">
+                PRX — the next pays.
+              </p>
+            </div>
 
-          <div className="mt-7 border-t border-slate-100 pt-5 space-y-3 text-[11px] sm:text-xs leading-relaxed">
-            <nav aria-label="Informações institucionais" className="flex flex-wrap gap-x-2 gap-y-1 text-slate-600">
-              <span>Termos de Uso</span><span aria-hidden="true">·</span>
-              <span>Política de Privacidade</span><span aria-hidden="true">·</span>
-              <span>Política de Cookies</span><span aria-hidden="true">·</span>
-              <span>Segurança</span><span aria-hidden="true">·</span>
-              <span>Atendimento</span>
-            </nav>
-            <p>
-              As marcas, nomes, logotipos, conteúdos, imagens, produtos e serviços apresentados neste site são
-              de propriedade da PRX ou de seus respectivos titulares. É proibida a reprodução, distribuição ou
-              utilização sem autorização prévia.
+            {/* Aliança de Marcas */}
+            <div className="flex items-center gap-4 pt-1 md:pt-0">
+              <PRXLogo size="sm" showSubtitle={false} className="w-20" />
+              <span className="text-slate-300 font-light text-base" aria-hidden="true">×</span>
+              <W1Logo size="sm" showSubtitle={false} className="w-18" />
+            </div>
+          </div>
+
+          {/* Links Institucionais e Conformidade */}
+          <nav aria-label="Informações institucionais" className="py-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-medium text-slate-600">
+            <span className="hover:text-slate-950 transition-colors cursor-pointer">Termos de Uso</span>
+            <span className="text-slate-300 select-none" aria-hidden="true">·</span>
+            <span className="hover:text-slate-950 transition-colors cursor-pointer">Política de Privacidade</span>
+            <span className="text-slate-300 select-none" aria-hidden="true">·</span>
+            <span className="hover:text-slate-950 transition-colors cursor-pointer">Política de Cookies</span>
+            <span className="text-slate-300 select-none" aria-hidden="true">·</span>
+            <span className="hover:text-slate-950 transition-colors cursor-pointer">Segurança</span>
+            <span className="text-slate-300 select-none" aria-hidden="true">·</span>
+            <span className="hover:text-slate-950 transition-colors cursor-pointer">Atendimento</span>
+          </nav>
+
+          {/* Informações Legais / Disclaimers (Menor, Estilo Faria Lima / Fintech) */}
+          <div className="pt-6 border-t border-slate-100 space-y-3 text-[11px] sm:text-xs leading-relaxed text-slate-400 font-normal">
+            <p className="max-w-4xl">
+              As marcas, nomes, logotipos, conteúdos, imagens, produtos e serviços apresentados neste site são de propriedade da PRX ou de seus respectivos titulares. É proibida a reprodução, distribuição ou utilização sem autorização prévia.
             </p>
-            <p>
-              PRX respeita a sua privacidade e realiza o tratamento de dados pessoais em conformidade com a
-              Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018).
+            <p className="max-w-4xl">
+              PRX respeita a sua privacidade e realiza o tratamento de dados pessoais em conformidade com a Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018).
             </p>
-            <p className="text-slate-600">CNPJ: 68025417000142 · Goiânia — GO · Brasil</p>
+            <p className="font-mono text-slate-500 pt-1">
+              CNPJ: 68025417000142 · Goiânia — GO · Brasil
+            </p>
           </div>
         </div>
       </footer>
