@@ -43,7 +43,7 @@ export default function PRXLogo({
         xmlns="http://www.w3.org/2000/svg"
         className={`overflow-visible select-none h-auto ${sizeClass} ${className}`}
         role="img"
-        aria-label="PRX — Experiências que Conectam Gerações"
+        aria-label="PRX — the next pays"
       >
         {parts.map((part) => {
           if (!showSubtitle && part.id === "subtitle") return null;

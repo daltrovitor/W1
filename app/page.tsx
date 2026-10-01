@@ -254,10 +254,16 @@ export default function ProposalPage() {
 
             {/* Assinatura Dual Visual no Hero */}
             <div className="mt-16 pt-12 border-t border-slate-100 flex flex-wrap items-center justify-center gap-8 sm:gap-16 opacity-90">
-              <div className="flex items-center gap-4">
-                <PRXLogo size="md" showSubtitle={true} className="w-32 sm:w-40" />
+              <div className="flex flex-col items-center gap-1">
+                <PRXLogo size="md" showSubtitle={false} className="w-32 sm:w-40" />
+                <span className="text-[10px] sm:text-xs font-medium tracking-wide text-slate-500">the next pays</span>
               </div>
-              <div className="h-10 w-px bg-slate-200 hidden sm:block" />
+              <img
+                src="https://prx.app.br/brand/prx-app-icon.svg/"
+                alt=""
+                aria-hidden="true"
+                className="w-9 h-9 sm:w-11 sm:h-11 object-contain"
+              />
               <div className="flex items-center gap-4">
                 <W1Logo size="md" showSubtitle={true} className="w-28 sm:w-36" />
               </div>
@@ -818,21 +824,37 @@ export default function ProposalPage() {
       {/* ========================================================================= */}
       {/* 10. RODAPÉ INSTITUCIONAL                                                  */}
       {/* ========================================================================= */}
-      <footer className="py-12 bg-white border-t border-slate-200 text-slate-500 text-xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <PRXLogo size="sm" showSubtitle={false} className="w-20" />
-            <span className="text-slate-300 text-lg">×</span>
-            <W1Logo size="sm" showSubtitle={false} className="w-16" />
+      <footer className="border-t border-slate-200 bg-white text-slate-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+          <div className="flex items-center gap-3 text-sm sm:text-base font-semibold text-slate-900">
+            <img
+              src="https://prx.app.br/brand/prx-app-icon.svg/"
+              alt=""
+              aria-hidden="true"
+              className="w-8 h-8 object-contain"
+            />
+            <p>© 2026 PRX. Todos os direitos reservados.</p>
           </div>
+          <p className="mt-2 text-sm sm:text-base font-medium text-slate-700">PRX — the next pays.</p>
 
-          <div className="text-center sm:text-right">
-            <p className="font-mono text-slate-600">
-              PRX INVEST × W1 CONSULTORIA FINANCEIRA • 2026
+          <div className="mt-7 border-t border-slate-100 pt-5 space-y-3 text-[11px] sm:text-xs leading-relaxed">
+            <nav aria-label="Informações institucionais" className="flex flex-wrap gap-x-2 gap-y-1 text-slate-600">
+              <span>Termos de Uso</span><span aria-hidden="true">·</span>
+              <span>Política de Privacidade</span><span aria-hidden="true">·</span>
+              <span>Política de Cookies</span><span aria-hidden="true">·</span>
+              <span>Segurança</span><span aria-hidden="true">·</span>
+              <span>Atendimento</span>
+            </nav>
+            <p>
+              As marcas, nomes, logotipos, conteúdos, imagens, produtos e serviços apresentados neste site são
+              de propriedade da PRX ou de seus respectivos titulares. É proibida a reprodução, distribuição ou
+              utilização sem autorização prévia.
             </p>
-            <p className="text-slate-400 mt-1">
-              Documento estratégico de proposta institucional. Todos os direitos reservados.
+            <p>
+              PRX respeita a sua privacidade e realiza o tratamento de dados pessoais em conformidade com a
+              Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018).
             </p>
+            <p className="text-slate-600">CNPJ: 68025417000142 · Goiânia — GO · Brasil</p>
           </div>
         </div>
       </footer>

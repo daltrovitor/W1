@@ -80,8 +80,6 @@ export default function IntroSplash({ isOpen, onClose }: IntroSplashProps) {
   const prxP = PRX_LOGO_DATA.parts.find((p) => p.id === "letter-p")!;
   const prxR = PRX_LOGO_DATA.parts.find((p) => p.id === "letter-r")!;
   const prxX = PRX_LOGO_DATA.parts.find((p) => p.id === "letter-x")!;
-  const prxSubtitle = PRX_LOGO_DATA.parts.find((p) => p.id === "subtitle")!;
-
   const w1W = W1_LOGO_DATA.parts.find((p) => p.id === "letter-w")!;
   const w1One = W1_LOGO_DATA.parts.find((p) => p.id === "letter-1")!;
 
@@ -214,14 +212,17 @@ export default function IntroSplash({ isOpen, onClose }: IntroSplashProps) {
                 transition: transitionPhysics,
               }}
             >
-              <image
-                href={prxSubtitle.href}
-                x={prxSubtitle.x}
-                y={prxSubtitle.y}
-                width={prxSubtitle.w}
-                height={prxSubtitle.h}
-                preserveAspectRatio="xMidYMid meet"
-              />
+              <text
+                x="336"
+                y="465"
+                textAnchor="middle"
+                fill="#032029"
+                fontFamily="Arial, sans-serif"
+                fontSize="28"
+                fontWeight="500"
+              >
+                the next pays
+              </text>
             </g>
           </svg>
         </div>
