@@ -37,6 +37,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
   },
+  icons: {
+    icon: [
+      { url: "/prx-app-icon.svg", type: "image/svg+xml" },
+      { url: "https://prx.app.br/brand/prx-app-icon.svg/", type: "image/svg+xml" },
+    ],
+    shortcut: "/prx-app-icon.svg",
+    apple: "/prx-app-icon.svg",
+  },
   robots: {
     index: true,
     follow: true,

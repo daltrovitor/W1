@@ -254,15 +254,14 @@ export default function ProposalPage() {
             </div>
 
             {/* Assinatura Dual Visual no Hero */}
-            <div className="mt-16 pt-12 border-t border-slate-100 flex flex-wrap items-center justify-center gap-8 sm:gap-14 opacity-95">
-              <div className="flex items-center gap-3">
-                <PRXLogo size="md" showSubtitle={true} className="w-32 sm:w-40" />
+            <div className="mt-16 pt-12 border-t border-slate-100 flex items-center justify-center gap-6 sm:gap-10 opacity-95">
+              <div className="flex items-center">
+                <PRXLogo size="md" showSubtitle={true} className="w-28 sm:w-36" />
               </div>
-              <div className="flex items-center justify-center">
-                <PRXAppIcon size={38} />
-              </div>
-              <div className="h-10 w-px bg-slate-200 hidden sm:block" />
-              <div className="flex items-center gap-4">
+              <span className="text-slate-300 font-light text-2xl sm:text-3xl select-none" aria-hidden="true">
+                ×
+              </span>
+              <div className="flex items-center">
                 <W1Logo size="md" showSubtitle={true} className="w-28 sm:w-36" />
               </div>
             </div>
